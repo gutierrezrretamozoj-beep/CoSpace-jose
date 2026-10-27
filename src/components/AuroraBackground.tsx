@@ -16,91 +16,89 @@ export default function AuroraBackground() {
     if (!ctx) return;
 
     let animationFrameId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
 
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     };
+    resize();
+    window.addEventListener('resize', resize);
 
-    window.addEventListener('resize', handleResize);
+    let step = 0;
 
-    let time = 0;
-
-    // Configuración de ondas de aurora boreal visibles y con movimiento perceptible
-    const waves = [
-      {
-        baseY: 0.22,
-        speed: 0.025,
-        amplitude: 110,
-        frequency: 0.003,
-        colorStart: 'rgba(56, 189, 248, 0.75)', // Cyan brillante
-        colorMid: 'rgba(192, 132, 252, 0.55)',   // Violeta
-        colorEnd: 'transparent',
-      },
-      {
-        baseY: 0.32,
-        speed: 0.018,
-        amplitude: 130,
-        frequency: 0.002,
-        colorStart: 'rgba(168, 85, 247, 0.70)', // Púrpura cósmico
-        colorMid: 'rgba(236, 72, 153, 0.50)',   // Magenta
-        colorEnd: 'transparent',
-      },
-      {
-        baseY: 0.15,
-        speed: 0.032,
-        amplitude: 90,
-        frequency: 0.0035,
-        colorStart: 'rgba(255, 255, 255, 0.85)', // Núcleo Blanco / Luz pura
-        colorMid: 'rgba(125, 211, 252, 0.60)',   // Celeste etéreo
-        colorEnd: 'transparent',
-      },
-      {
-        baseY: 0.42,
-        speed: 0.015,
-        amplitude: 140,
-        frequency: 0.0018,
-        colorStart: 'rgba(192, 132, 252, 0.60)',
-        colorMid: 'rgba(56, 189, 248, 0.45)',
-        colorEnd: 'transparent',
-      },
-    ];
-
+    // Cortinas verticales de aurora boreal con ondulaciones y rayos luminosos en movimiento
     const render = () => {
-      time += 1;
-      ctx.clearRect(0, 0, width, height);
+      step += 1;
+      const w = canvas.width;
+      const h = canvas.height;
 
-      // Dibujar cada cortina de aurora con gradientes orgánicos ondulantes
-      waves.forEach((w, idx) => {
-        ctx.save();
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
+      ctx.clearRect(0, 0, w, h);
 
-        const currentBaseY = height * w.baseY;
+      // CORTINA 1: Resplandor verde esmeralda y cian boreal (característico de auroras boreales)
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      for (let x = 0; x <= w; x += 12) {
+        const y1 = Math.sin(x * 0.003 + step * 0.04) * 90;
+        const y2 = Math.cos(x * 0.0015 - step * 0.025) * 60;
+        const y = h * 0.28 + y1 + y2;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(w, 0);
+      ctx.closePath();
 
-        for (let x = 0; x <= width; x += 10) {
-          const sin1 = Math.sin(x * w.frequency + time * w.speed + idx * 1.5);
-          const sin2 = Math.sin(x * (w.frequency * 1.8) - time * (w.speed * 0.8) + idx);
-          const y = currentBaseY + sin1 * w.amplitude + sin2 * (w.amplitude * 0.45);
-          ctx.lineTo(x, y);
-        }
+      const grad1 = ctx.createLinearGradient(0, 0, 0, h * 0.55);
+      grad1.addColorStop(0, 'rgba(56, 189, 248, 0.85)');   // Cyan eléctrico
+      grad1.addColorStop(0.35, 'rgba(74, 222, 128, 0.70)'); // Verde esmeralda boreal
+      grad1.addColorStop(0.7, 'rgba(168, 85, 247, 0.40)');  // Púrpura
+      grad1.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad1;
+      ctx.fill();
+      ctx.restore();
 
-        ctx.lineTo(width, 0);
-        ctx.closePath();
+      // CORTINA 2: Cinta ondulante violeta y magenta cósmica
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      for (let x = 0; x <= w; x += 12) {
+        const y1 = Math.sin(x * 0.0025 - step * 0.035 + 2) * 110;
+        const y2 = Math.sin(x * 0.005 + step * 0.02) * 45;
+        const y = h * 0.38 + y1 + y2;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(w, 0);
+      ctx.closePath();
 
-        // Degradado vertical con luz etérea
-        const grad = ctx.createLinearGradient(0, 0, 0, currentBaseY + w.amplitude * 1.8);
-        grad.addColorStop(0, w.colorStart);
-        grad.addColorStop(0.5, w.colorMid);
-        grad.addColorStop(1, w.colorEnd);
+      const grad2 = ctx.createLinearGradient(0, 0, 0, h * 0.65);
+      grad2.addColorStop(0, 'rgba(192, 132, 252, 0.75)');  // Lavanda luminoso
+      grad2.addColorStop(0.45, 'rgba(236, 72, 153, 0.65)'); // Magenta vibrante
+      grad2.addColorStop(0.8, 'rgba(56, 189, 248, 0.30)');  // Cyan
+      grad2.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad2;
+      ctx.fill();
+      ctx.restore();
 
-        ctx.fillStyle = grad;
-        ctx.fill();
-        ctx.restore();
-      });
+      // CORTINA 3: Núcleo etéreo blanco y celeste en primer plano con ondas rápidas
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      for (let x = 0; x <= w; x += 10) {
+        const y1 = Math.sin(x * 0.004 + step * 0.05 + 1) * 75;
+        const y2 = Math.cos(x * 0.002 - step * 0.03) * 50;
+        const y = h * 0.2 + y1 + y2;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(w, 0);
+      ctx.closePath();
+
+      const grad3 = ctx.createLinearGradient(0, 0, 0, h * 0.45);
+      grad3.addColorStop(0, 'rgba(255, 255, 255, 0.90)');  // Luz blanca pura
+      grad3.addColorStop(0.4, 'rgba(125, 211, 252, 0.75)'); // Celeste vivo
+      grad3.addColorStop(0.8, 'rgba(192, 132, 252, 0.35)'); // Líbano suave
+      grad3.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad3;
+      ctx.fill();
+      ctx.restore();
 
       animationFrameId = requestAnimationFrame(render);
     };
@@ -108,7 +106,7 @@ export default function AuroraBackground() {
     render();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -116,7 +114,7 @@ export default function AuroraBackground() {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10 bg-[#060411]">
       {/* ======================================================== */}
-      {/* CAPA AURORA PÚRPURA CÓSMICA (Keyframes de la prueba)     */}
+      {/* CAPA AURORA PÚRPURA CÓSMICA (Keyframes requeridos)       */}
       {/* ======================================================== */}
       <div className="absolute -top-[10%] -left-[8%] w-[75vw] h-[85vw] max-w-[1150px] max-h-[1150px] rounded-[58%_42%_62%_38%] bg-gradient-to-tr from-[#a855f7]/85 via-[#c084fc]/75 to-[#d8b4fe]/60 blur-[75px] animate-aurora-purple" />
 
@@ -140,8 +138,8 @@ export default function AuroraBackground() {
       {/* ======================================================== */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-85 mix-blend-screen"
-        style={{ filter: 'blur(25px)' }}
+        className="absolute inset-0 w-full h-full mix-blend-screen"
+        style={{ filter: 'blur(20px)' }}
       />
 
       {/* ======================================================== */}
