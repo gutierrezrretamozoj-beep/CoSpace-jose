@@ -127,13 +127,6 @@ body {
     transform: scaleX(0.96) translateY(0);
   }
 }
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(-4%, 0, 0) scaleY(1) skewX(-6deg);
-    opacity: 0.8;
-  }
-}
 
 @keyframes aurora-ribbon-dance {
   0% {
