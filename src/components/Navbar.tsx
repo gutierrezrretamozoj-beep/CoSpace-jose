@@ -60,7 +60,7 @@ export default function Navbar() {
     <header className="sticky top-5 z-50 max-w-6xl mx-auto px-4 w-full">
       <div className="relative rounded-full backdrop-blur-2xl bg-[#0c0824]/80 border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-hidden">
         {/* ============================================================ */}
-        {/* CAPA 1: POLVO DE ESTRELLAS ESCARCHADO, BRILLANTE Y EN BARRIDO */}
+        {/* CAPA 1: POLVO DE ESTRELLAS ESCARCHADO Y CONSTELACIÓN VIVA    */}
         {/* ============================================================ */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-full">
           {/* Nube luminosa de polvo estelar morado y celeste */}
@@ -70,13 +70,25 @@ export default function Navbar() {
           <div className="absolute top-0 -left-32 w-80 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent blur-md animate-stardust-sweep" />
 
           {/* Destellos y chispas de estrellas escarchadas que viajan en el barrido */}
-          <div className="absolute top-3.5 -left-24 flex items-center gap-6 animate-stardust-sweep">
+          <div className="absolute top-3.5 -left-24 flex items-center gap-5 animate-stardust-sweep">
             <span className="text-xs text-cyan-300 drop-shadow-[0_0_8px_#38bdf8] animate-glitter">✦</span>
             <span className="text-[10px] text-purple-300 drop-shadow-[0_0_6px_#c084fc] animate-glitter">✧</span>
             <span className="text-xs text-sky-200 drop-shadow-[0_0_8px_#38bdf8] animate-glitter">✶</span>
             <span className="text-[9px] text-white drop-shadow-[0_0_6px_#ffffff] animate-glitter">✦</span>
             <span className="text-xs text-cyan-200 drop-shadow-[0_0_8px_#38bdf8] animate-glitter">✧</span>
+            <span className="text-[11px] text-emerald-300 drop-shadow-[0_0_8px_#4ade80] animate-glitter">★</span>
+            <span className="text-[9px] text-pink-300 drop-shadow-[0_0_6px_#f472b6] animate-glitter">✧</span>
           </div>
+
+          {/* Estrellas titilantes fijas distribuidas a lo largo del navbar */}
+          <span className="absolute top-2 left-28 text-[11px] text-cyan-300 drop-shadow-[0_0_8px_#38bdf8] animate-twinkle-1">✦</span>
+          <span className="absolute bottom-2.5 left-48 text-[9px] text-purple-200 drop-shadow-[0_0_6px_#c084fc] animate-twinkle-2">✧</span>
+          <span className="absolute top-3.5 left-[38%] text-[10px] text-white drop-shadow-[0_0_7px_#ffffff] animate-twinkle-3">✦</span>
+          <span className="absolute bottom-2 left-[48%] text-[8px] text-sky-300 drop-shadow-[0_0_6px_#7dd3fc] animate-twinkle-1">✶</span>
+          <span className="absolute top-2.5 right-[34%] text-[10px] text-pink-200 drop-shadow-[0_0_6px_#f472b6] animate-twinkle-2">✧</span>
+          <span className="absolute bottom-3 right-[22%] text-[11px] text-emerald-300 drop-shadow-[0_0_8px_#4ade80] animate-twinkle-3">✦</span>
+          <span className="absolute top-3 right-12 text-[9px] text-cyan-200 drop-shadow-[0_0_6px_#38bdf8] animate-twinkle-1">✧</span>
+          <span className="absolute bottom-2 right-4 text-[10px] text-white drop-shadow-[0_0_7px_#ffffff] animate-twinkle-2">✦</span>
         </div>
 
         {/* ============================================================ */}
