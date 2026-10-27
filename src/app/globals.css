@@ -182,22 +182,20 @@ body {
 
 @keyframes stardust-navbar-sweep {
   0% {
-    transform: translateX(-100%) rotate(-4deg);
+    transform: translateX(-150px) rotate(-4deg);
     opacity: 0;
   }
-  15% {
+  10% {
     opacity: 0.95;
   }
   50% {
-    transform: translateX(120%) rotate(4deg) scaleY(1.12);
     opacity: 1;
   }
-  85% {
-    transform: translateX(250%) rotate(-2deg);
-    opacity: 0.7;
+  90% {
+    opacity: 0.95;
   }
   100% {
-    transform: translateX(350%);
+    transform: translateX(calc(100vw + 200px)) rotate(4deg);
     opacity: 0;
   }
 }

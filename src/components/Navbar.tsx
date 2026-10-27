@@ -63,21 +63,43 @@ export default function Navbar() {
         {/* CAPA 1: POLVO DE ESTRELLAS ESCARCHADO Y CONSTELACIÓN VIVA    */}
         {/* ============================================================ */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-full">
-          {/* Nube luminosa de polvo estelar morado y celeste */}
-          <div className="absolute -top-10 -left-40 w-[420px] h-32 bg-gradient-to-r from-transparent via-purple-400/40 via-cyan-300/50 to-transparent blur-xl animate-stardust-sweep" />
+          {/* Nube luminosa de polvo estelar morado y celeste en barrido */}
+          <div className="absolute -top-10 -left-60 w-[550px] h-32 bg-gradient-to-r from-transparent via-purple-400/40 via-cyan-300/50 to-transparent blur-xl animate-stardust-sweep" />
 
-          {/* Ráfaga de escarcha resplandeciente */}
-          <div className="absolute top-0 -left-32 w-80 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent blur-md animate-stardust-sweep" />
+          {/* Ráfaga de escarcha resplandeciente en barrido */}
+          <div className="absolute top-0 -left-48 w-[400px] h-full bg-gradient-to-r from-transparent via-white/50 to-transparent blur-md animate-stardust-sweep" />
 
-          {/* Destellos y chispas de estrellas escarchadas que viajan en el barrido */}
-          <div className="absolute top-3.5 -left-24 flex items-center gap-5 animate-stardust-sweep">
-            <span className="text-xs text-cyan-300 drop-shadow-[0_0_8px_#38bdf8] animate-glitter">✦</span>
-            <span className="text-[10px] text-purple-300 drop-shadow-[0_0_6px_#c084fc] animate-glitter">✧</span>
-            <span className="text-xs text-sky-200 drop-shadow-[0_0_8px_#38bdf8] animate-glitter">✶</span>
-            <span className="text-[9px] text-white drop-shadow-[0_0_6px_#ffffff] animate-glitter">✦</span>
+          {/* OLEADA 1 DE ESTRELLAS EN BARRIDO DE IZQUIERDA A DERECHA */}
+          <div className="absolute top-2 -left-40 flex items-center gap-7 animate-stardust-sweep">
+            <span className="text-sm text-cyan-300 drop-shadow-[0_0_10px_#38bdf8] animate-glitter">✦</span>
+            <span className="text-xs text-purple-300 drop-shadow-[0_0_8px_#c084fc] animate-glitter">✧</span>
+            <span className="text-sm text-sky-200 drop-shadow-[0_0_10px_#38bdf8] animate-glitter">✶</span>
+            <span className="text-xs text-white drop-shadow-[0_0_8px_#ffffff] animate-glitter">✦</span>
             <span className="text-xs text-cyan-200 drop-shadow-[0_0_8px_#38bdf8] animate-glitter">✧</span>
-            <span className="text-[11px] text-emerald-300 drop-shadow-[0_0_8px_#4ade80] animate-glitter">★</span>
-            <span className="text-[9px] text-pink-300 drop-shadow-[0_0_6px_#f472b6] animate-glitter">✧</span>
+            <span className="text-sm text-emerald-300 drop-shadow-[0_0_10px_#4ade80] animate-glitter">★</span>
+            <span className="text-xs text-pink-300 drop-shadow-[0_0_8px_#f472b6] animate-glitter">✧</span>
+            <span className="text-sm text-yellow-200 drop-shadow-[0_0_10px_#fef08a] animate-glitter">✦</span>
+            <span className="text-xs text-cyan-100 drop-shadow-[0_0_8px_#38bdf8] animate-glitter">✶</span>
+          </div>
+
+          {/* OLEADA 2 DE ESTRELLAS EN BARRIDO (Ligeramente desfasada y en parte inferior) */}
+          <div className="absolute bottom-2 -left-32 flex items-center gap-8 animate-stardust-sweep" style={{ animationDelay: '1.2s' }}>
+            <span className="text-xs text-white drop-shadow-[0_0_8px_#ffffff] animate-glitter">✦</span>
+            <span className="text-sm text-pink-300 drop-shadow-[0_0_10px_#ec4899] animate-glitter">★</span>
+            <span className="text-xs text-cyan-200 drop-shadow-[0_0_8px_#38bdf8] animate-glitter">✧</span>
+            <span className="text-xs text-purple-200 drop-shadow-[0_0_8px_#c084fc] animate-glitter">✶</span>
+            <span className="text-sm text-emerald-300 drop-shadow-[0_0_10px_#4ade80] animate-glitter">✦</span>
+            <span className="text-xs text-sky-300 drop-shadow-[0_0_8px_#7dd3fc] animate-glitter">✧</span>
+            <span className="text-sm text-white drop-shadow-[0_0_10px_#ffffff] animate-glitter">★</span>
+          </div>
+
+          {/* OLEADA 3 DE ESTRELLAS EN BARRIDO (Tercer tren de estrellas con destellos rápidos) */}
+          <div className="absolute top-4 -left-20 flex items-center gap-6 animate-stardust-sweep" style={{ animationDelay: '3.2s' }}>
+            <span className="text-xs text-cyan-300 drop-shadow-[0_0_8px_#38bdf8] animate-glitter">✧</span>
+            <span className="text-sm text-yellow-100 drop-shadow-[0_0_10px_#fef08a] animate-glitter">✦</span>
+            <span className="text-xs text-purple-300 drop-shadow-[0_0_8px_#c084fc] animate-glitter">✶</span>
+            <span className="text-xs text-white drop-shadow-[0_0_8px_#ffffff] animate-glitter">✦</span>
+            <span className="text-sm text-emerald-200 drop-shadow-[0_0_10px_#4ade80] animate-glitter">✧</span>
           </div>
 
           {/* Estrellas titilantes fijas distribuidas a lo largo del navbar */}
