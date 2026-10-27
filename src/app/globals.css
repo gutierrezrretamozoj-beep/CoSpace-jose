@@ -70,14 +70,63 @@ body {
   }
 }
 
-/* Ondulación de cortina de aurora boreal viva */
+/* Ondulación y desplazamiento orgánico de cortinas de aurora boreal */
 @keyframes aurora-curtain-flow {
   0% {
-    transform: translate3d(-4%, 0, 0) scaleY(1) skewX(-6deg);
+    transform: translate3d(-6%, 0, 0) scaleY(1) skewX(-8deg);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate3d(6%, -4%, 0) scaleY(1.28) skewX(10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-6%, 0, 0) scaleY(1) skewX(-8deg);
+    opacity: 0.75;
+  }
+}
+
+@keyframes aurora-curtain-flow-reverse {
+  0% {
+    transform: translate3d(8%, 0, 0) scaleY(1.1) skewX(9deg);
     opacity: 0.8;
   }
   50% {
-    transform: translate3d(4%, -5%, 0) scaleY(1.22) skewX(8deg);
+    transform: translate3d(-6%, 5%, 0) scaleY(0.9) skewX(-11deg);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate3d(8%, 0, 0) scaleY(1.1) skewX(9deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes aurora-vertical-rays {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes aurora-shimmer-fast {
+  0% {
+    opacity: 0.6;
+    transform: scaleX(0.96) translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.08) translateY(-15px);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scaleX(0.96) translateY(0);
+  }
+}
     opacity: 1;
   }
   100% {
