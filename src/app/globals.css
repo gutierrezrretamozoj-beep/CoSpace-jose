@@ -1,26 +1,314 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  background-color: #060411;
+  color: #f8fafc;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ========================================================= */
+/* --- KEYFRAMES REQUERIDOS POR LA PRUEBA TÉCNICA ---        */
+/* ========================================================= */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes aurora-wave-purple {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) skewX(0deg) scale(1);
+    opacity: 0.85;
+  }
+  25% {
+    transform: translate3d(70px, -45px, 0) rotate(14deg) skewX(-10deg) scale(1.18);
+    opacity: 0.98;
+  }
+  50% {
+    transform: translate3d(-40px, 60px, 0) rotate(-12deg) skewX(12deg) scale(1.26);
+    opacity: 0.82;
+  }
+  75% {
+    transform: translate3d(-80px, -25px, 0) rotate(16deg) skewX(-8deg) scale(1.08);
+    opacity: 0.94;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.85;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes aurora-wave-cyan {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) skewY(0deg) scale(1);
+    opacity: 0.75;
+  }
+  33% {
+    transform: translate3d(-90px, 55px, 0) rotate(-18deg) skewY(10deg) scale(1.30);
+    opacity: 0.92;
+  }
+  66% {
+    transform: translate3d(85px, -60px, 0) rotate(15deg) skewY(-12deg) scale(0.92);
+    opacity: 0.68;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.75;
+  }
+}
+
+@keyframes aurora-wave-magenta {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 0.70;
+  }
+  50% {
+    transform: translate3d(60px, -70px, 0) scale(1.35) rotate(20deg);
+    opacity: 0.98;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 0.70;
+  }
+}
+
+/* Ondulación de cortina de aurora boreal viva */
+@keyframes aurora-curtain-flow {
+  0% {
+    transform: translate3d(-4%, 0, 0) scaleY(1) skewX(-6deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate3d(4%, -5%, 0) scaleY(1.22) skewX(8deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-4%, 0, 0) scaleY(1) skewX(-6deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes aurora-ribbon-dance {
+  0% {
+    transform: rotate(-12deg) translate3d(-30px, 0, 0) scale(1);
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    transform: rotate(4deg) translate3d(40px, -30px, 0) scale(1.15);
+    filter: hue-rotate(18deg);
+  }
+  100% {
+    transform: rotate(-12deg) translate3d(-30px, 0, 0) scale(1);
+    filter: hue-rotate(0deg);
+  }
+}
+
+.animate-aurora-purple {
+  animation: aurora-wave-purple 9s ease-in-out infinite;
+}
+
+.animate-aurora-cyan {
+  animation: aurora-wave-cyan 11s ease-in-out infinite;
+}
+
+.animate-aurora-magenta {
+  animation: aurora-wave-magenta 13s ease-in-out infinite;
+}
+
+.animate-aurora-curtain {
+  animation: aurora-curtain-flow 8s ease-in-out infinite alternate;
+}
+
+.animate-aurora-ribbon {
+  animation: aurora-ribbon-dance 10s ease-in-out infinite;
+}
+
+/* Compatibilidad con animaciones continuas */
+.animate-aurora-main {
+  animation: aurora-wave-purple 9s ease-in-out infinite;
+}
+
+.animate-aurora-secondary {
+  animation: aurora-wave-cyan 11s ease-in-out infinite;
+}
+
+.animate-aurora-tertiary {
+  animation: aurora-wave-magenta 13s ease-in-out infinite;
+}
+
+/* ========================================================= */
+/* --- POLVO DE ESTRELLAS ESCARCHADO EN NAVBAR (6 A 7S) --- */
+/* ========================================================= */
+
+@keyframes stardust-navbar-sweep {
+  0% {
+    transform: translateX(-100%) rotate(-4deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  50% {
+    transform: translateX(120%) rotate(4deg) scaleY(1.12);
+    opacity: 1;
+  }
+  85% {
+    transform: translateX(250%) rotate(-2deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(350%);
+    opacity: 0;
+  }
+}
+
+@keyframes stardust-line-settle {
+  0%, 20% {
+    left: -35%;
+    width: 25%;
+    opacity: 0;
+    transform: scaleY(0.7);
+  }
+  45% {
+    opacity: 1;
+    transform: scaleY(1.8);
+    box-shadow: 0 0 14px #c084fc, 0 0 28px #38bdf8, 0 0 40px #ffffff;
+  }
+  80% {
+    left: 100%;
+    width: 45%;
+    opacity: 0.9;
+    box-shadow: 0 0 14px #c084fc;
+  }
+  95%, 100% {
+    left: 135%;
+    opacity: 0;
+  }
+}
+
+.animate-stardust-sweep {
+  animation: stardust-navbar-sweep 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-stardust-bottom {
+  animation: stardust-line-settle 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes stardust-glitter-drift {
+  0%, 100% {
+    transform: translateY(0px) scale(0.85);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(-4px) scale(1.35);
+    opacity: 1;
+    filter: drop-shadow(0 0 6px #ffffff) drop-shadow(0 0 12px #38bdf8);
+  }
+}
+
+.animate-glitter {
+  animation: stardust-glitter-drift 2.5s ease-in-out infinite;
+}
+
+/* ========================================================= */
+/* --- ESTRELLAS PARPADEANTES DE FONDO ---                  */
+/* ========================================================= */
+
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 6px #ffffff);
+  }
+}
+
+.animate-twinkle-1 {
+  animation: star-twinkle 3.2s ease-in-out infinite;
+}
+
+.animate-twinkle-2 {
+  animation: star-twinkle 4.8s ease-in-out infinite 1.2s;
+}
+
+.animate-twinkle-3 {
+  animation: star-twinkle 6.1s ease-in-out infinite 2.5s;
+}
+
+/* ========================================================= */
+/* --- GLASSMORPHISM CÓSMICO (REQUISITO REGLA 4) ---        */
+/* ========================================================= */
+
+.aurora-glass-card {
+  position: relative;
+  background: rgba(18, 12, 38, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), 0 0 20px -2px rgba(168, 85, 247, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.aurora-glass-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55), 0 0 30px rgba(168, 85, 247, 0.3);
+}
+
+.aurora-navbar-capsule {
+  position: relative;
+  border-radius: 9999px;
+  background: rgba(12, 8, 36, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.aurora-btn-cyan {
+  background-color: #00a6ff;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(0, 166, 255, 0.5);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+.aurora-btn-cyan:hover {
+  background-color: #0092e0;
+  box-shadow: 0 6px 24px rgba(0, 166, 255, 0.7);
+  transform: translateY(-1px);
+}
+
+.aurora-btn-frosted {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.aurora-btn-frosted:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
 }

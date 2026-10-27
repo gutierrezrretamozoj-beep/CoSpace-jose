@@ -1,0 +1,14 @@
+node_modules
+.next
+.git
+.vscode
+.env
+.env.local
+.agents
+.claude
+.cursor
+.devin
+README.md
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
